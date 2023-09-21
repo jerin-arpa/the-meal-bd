@@ -7,9 +7,9 @@ import {
 import './index.css'
 import Home from './component/Home/Home';
 import Categories from './component/Categories/Categories';
-import Meals from './component/Meals/Meals';
 import About from './component/About/About';
 import Contact from './component/Contact/Contact';
+import Meals from './component/Meals/Meals';
 
 
 const router = createBrowserRouter([
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
         element: <Categories></Categories>,
       },
       {
-        path: '/meals',
-        loader: () => ('https://www.themealdb.com/api/json/v1/1/filter.php?c=beef'),
+        path: '/meals/:mealsName',
+        loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.mealsName}`),
         element: <Meals></Meals>
       },
       {
